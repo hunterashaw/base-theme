@@ -1,0 +1,26 @@
+{
+    "name": "bc-theme",
+    "description": "Custom BigCommerce Theme",
+    "version": "0.0.1",
+    "private": true,
+    "author": "hunterashaw",
+    "license": "MIT",
+    "dependencies": {
+        "clsx": "^1.2.1",
+        "preact": "^10.10.6"
+    },
+    "devDependencies": {
+        "@bigcommerce/stencil-cli": "5.1.0",
+        "bigcommerce-client": "^1.4.0",
+        "es-static-build": "^1.0.1",
+        "esbuild": "^0.15.5",
+        "preact-render-to-string": "^5.2.2",
+        "tailwindcss": "^3.1.8"
+    },
+    "scripts": {
+        "start": "npx stencil start",
+        "init": "npx stencil init",
+        "build": "npx stencil build",
+        "push-widgets": "node scripts/push-widgets.js"
+    }
+}
