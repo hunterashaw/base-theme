@@ -3,19 +3,47 @@ import { block } from './template'
 import { render } from 'preact-render-to-string'
 
 export function widgetSchema(name: string, ...sections) {
-    return [
-        {
-            type: 'tab',
-            label: name,
-            sections
-        }
-    ]
+    return {
+        type: 'tab',
+        label: name,
+        sections
+    }
+}
+
+export function schemaArray(
+    name: string,
+    label: string,
+    entryLabel: string,
+    defaultCount: number,
+    ...schema: array
+) {
+    return {
+        label,
+        type: 'array',
+        entryLabel,
+        id: name,
+        defaultCount,
+        schema
+    }
 }
 
 export function schemaSection(name: string, ...settings) {
     return {
         label: name,
         settings
+    }
+}
+
+export function schemaBooleanSetting(
+    name: string,
+    label: string,
+    defaultValue = true
+) {
+    return {
+        type: 'boolean',
+        label,
+        id: name,
+        default: defaultValue
     }
 }
 
@@ -35,14 +63,13 @@ export function schemaTextSetting(
 export function schemaSelectSetting(
     name: string,
     label: string,
-    options: Record<string, string>,
-    defaultValue: string
+    options: Record<string, string>
 ) {
     return {
         type: 'select',
         label,
         id: name,
-        default: defaultValue,
+        default: options.Default,
         typeMeta: {
             selectOptions: Object.entries(options).map(([label, value]) => ({
                 label,
@@ -58,7 +85,7 @@ export function schemaImageSetting(name: string, label: string) {
         id: name,
         label,
         default: {
-            src: 'https://images.unsplash.com/photo-1533038590840-1cde6e668a91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=100',
+            src: 'https://images.unsplash.com/photo-1667520939383-66419fc62c23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=100',
             type: 'IMAGE_MANAGER'
         }
     }
