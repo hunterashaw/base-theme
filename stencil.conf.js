@@ -1,5 +1,4 @@
 const esbuild = require('esbuild')
-const fs = require('fs')
 const { spawn } = require('child_process')
 
 const createSpawn = command => {
